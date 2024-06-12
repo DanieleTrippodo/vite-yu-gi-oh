@@ -19,15 +19,29 @@ const fetchCardInfo = async () => {
 
 <!-- Qui va il contenuto di questo elemento (HTML) -->
 <template>
-  <div>
-    <h1>Yu-Gi-Oh Card Info</h1>
-    <button @click="fetchCardInfo">Fetch Card Info</button>
-    <ul>
-      <li v-for="card in cards" :key="card.id">
-        {{ card.name }} - {{ card.type }}
+
+    <div class="flex">
+      <h1>Yu-Gi-Oh Card Info</h1>
+      <button @click="fetchCardInfo">Genera Carte</button>
+    </div>
+
+
+    <div class="flex2">
+      <ul>
+      <li v-for="card in cards" :key="card.id" class="card flex2">
+        <img :src="card.card_images[0].image_url" :alt="card.name" class="card-image"/>
+        <div class="card-details">
+          <h2>{{ card.name }}</h2>
+          <p><strong>Type:</strong> {{ card.type }}</p>
+          <p><strong>Race:</strong> {{ card.race }}</p>
+          <p>{{ card.desc }}</p>
+        </div>
       </li>
     </ul>
-  </div>
+    </div>
+
+
+
 </template>
 
 
@@ -41,9 +55,28 @@ button {
 ul {
   list-style-type: none;
   padding: 0;
+
 }
 
 li {
   margin: 5px 0;
+}
+
+img{
+  width: 20%;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.flex2{
+  display: flex;
 }
 </style>

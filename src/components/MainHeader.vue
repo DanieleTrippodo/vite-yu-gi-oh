@@ -38,7 +38,8 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: (70, 191, 207);
+  color: black;
 
 
   border-bottom: 1px black solid;

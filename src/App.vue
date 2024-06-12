@@ -18,11 +18,13 @@ export default defineComponent({
 
 
 <template>
+  <main>
   
-  <MainHeader />
+    <MainHeader />
 
-  <CardInfo />
+    <CardInfo />
 
+  </main>
 </template>
 
 
@@ -30,6 +32,10 @@ export default defineComponent({
 
 
 <style scoped>
+main{
+  background-color: rgb(70, 191, 207);
 
+  
+}
 
 </style>

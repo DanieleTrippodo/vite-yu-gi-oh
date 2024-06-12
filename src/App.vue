@@ -1,12 +1,17 @@
 <script>
+import axios from 'axios'
 import MainHeader from './components/MainHeader.vue';
+import { defineComponent } from 'vue'
+import CardInfo from './components/CardInfo.vue'
 
-export default {
+
+export default defineComponent({
   name: 'App',
   components: {
-    MainHeader
+    MainHeader,
+    CardInfo
   }
-}
+})
 </script>
 
 
@@ -15,6 +20,8 @@ export default {
 <template>
   
   <MainHeader />
+
+  <CardInfo />
 
 </template>
 

@@ -1,18 +1,43 @@
 <!-- Qui va la logica del componente (Vue3 + Javascript) -->
-<script setup>
-import { ref } from 'vue'
-import axios from 'axios'
+<script>
+import ArchetypeFilter from './ArchetypeFilter.vue';
+import axios from 'axios';
 
-const cards = ref([])
-
-const fetchCardInfo = async () => {
-  try {
-    const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-    cards.value = response.data.data
-  } catch (error) {
-    console.error('Error fetching card info:', error)
-  }
-}
+export default {
+  components: {
+    ArchetypeFilter,
+  },
+  data() {
+    return {
+      cards: [],
+    };
+  },
+  methods: {
+    async fetchCardsByArchetype(archetype) {
+      try {
+        const endpoint = archetype
+          ? `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${encodeURIComponent(archetype)}`
+          : 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
+        
+        const response = await axios.get(endpoint);
+        this.cards = response.data.data; // Assicurati che la struttura dei dati sia corretta
+      } catch (error) {
+        console.error('Failed to fetch cards:', error);
+      }
+    },
+    async fetchCardInfo() {
+      try {
+        const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php');
+        this.cards = response.data.data; // Assicurati che la struttura dei dati sia corretta
+      } catch (error) {
+        console.error('Failed to fetch card info:', error);
+      }
+    },
+  },
+  mounted() {
+    this.fetchCardsByArchetype(''); // Carica tutte le carte inizialmente
+  },
+};
 </script>
 
 
@@ -25,6 +50,7 @@ const fetchCardInfo = async () => {
       <button @click="fetchCardInfo">Genera Carte</button>
     </div>
 
+    <ArchetypeFilter @archetype-selected="fetchCardsByArchetype" />
 
     <div class="flex2">
       <ul>

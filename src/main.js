@@ -1,5 +1,11 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import ArchetypeFilter from './components/ArchetypeFilter.vue';
+import CardInfo from './components/CardInfo.vue';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+app.component('ArchetypeFilter', ArchetypeFilter);
+app.component('CardInfo', CardInfo);
+
+app.mount('#app');

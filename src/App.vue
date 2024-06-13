@@ -1,8 +1,8 @@
 <script>
-import axios from 'axios'
+import axios from 'axios';
 import MainHeader from './components/MainHeader.vue';
-import { defineComponent } from 'vue'
-import CardInfo from './components/CardInfo.vue'
+import { defineComponent } from 'vue';
+import CardInfo from './components/CardInfo.vue';
 
 
 export default defineComponent({
